@@ -68,6 +68,13 @@ flutter:
     - assets/image/download (3).png
     - assets/image/download (2).png
     - assets/image/download (1).png
+    - assets/image/download (1).jpeg
+    - assets/image/download (2).jpeg
+    - assets/image/images (2).jpeg
+    - assets/image/images (3).jpeg
+    - assets/image/sample-qr-code-icon-vector-260nw-529327996.webp
+    
+    
     
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

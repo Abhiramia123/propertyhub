@@ -90,7 +90,7 @@ class _loginState extends State<loginscreen> {
              padding: const EdgeInsets.only(left:10,right: 10),
              child: Divider(color: Color.fromARGB(255, 86, 223, 91),),
            )),
-        Text('QR',
+        Text('OR',
         style: TextStyle(fontSize: 15,color:const Color.fromARGB(255, 97, 221, 101)),),
         Expanded(child: 
         Padding(
@@ -123,7 +123,7 @@ class _loginState extends State<loginscreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-              Image.asset('assets/image/download.png',
+              Image.asset('assets/image/download.png',height: 35,
               ),SizedBox(width: 10),
               Text('Login with google',
               style: TextStyle(fontSize: 17,

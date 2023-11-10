@@ -37,16 +37,17 @@ class _HomescreenState extends State<Homescreen> {
     return Scaffold(body:Center(
       child: 
         Container(
-        color: Color.fromARGB(255, 37, 97, 37),
-        height: 300,
-        width: 300,
+        color: Color.fromARGB(255, 145, 181, 145).withOpacity(0.5),
+        height: 350,
+        width: 350,
        child: 
        Center(
-         child: Text('PROPERTY HUB',
-         style: TextStyle(fontWeight: FontWeight.bold,
-         color: Colors.white,
-         fontSize: 25
-         ),),
+        child: Image.asset('assets/image/property-hub-high-resolution-logo-transparent.png'),
+        //  child: Text('PROPERTY HUB',
+        //  style: TextStyle(fontWeight: FontWeight.bold,
+        //  color: Colors.white,
+        //  fontSize: 25
+        //  ),),
        ),
       )
     ) );
