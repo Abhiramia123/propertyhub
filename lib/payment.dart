@@ -17,124 +17,121 @@ class _paymentState extends State<payment> {
     ),
     body: Padding(
       padding: const EdgeInsets.only(top: 10,left: 10),
-      child: Column(
+      child: ListView(
         children: [
-          Container(height: 170,
-            width: 340,
-            color: Colors.amber,
-            child: Image(image: AssetImage('assets/image/download (2).jpeg'),
-            fit: BoxFit.fill,),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              
-              children: [
-                SizedBox(height: 30,),
-              Text('Rent Amount :'),
-              SizedBox(height: 10,),
-              Text('Property code :'),
-              SizedBox(height: 10,),
-              Text('Contract Renewal Date :'),
-              SizedBox(height: 10,),
-              Text('Checkin Date :'),
-              SizedBox(height: 10,),
-              Text('Checkout Date :')
-              ],),
-             
-              Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 30,),
-                Text('SAR 35,000.00'),
-                SizedBox(height: 10,),
-              Text('#REG15675'),
-              SizedBox(height: 10,),
-              Text('2022-01-31'),
-              SizedBox(height: 10,),
-              Text('2022-05-31'),
-              SizedBox(height: 10,),
-              Text('2022-11-21'),
-              ],)
-              
-              ],),
-             SizedBox(
-              height: 60,
-              child: Divider(color: Colors.black,)),
-             IntrinsicHeight(
-             child: 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-              Text('view contract'),
-               VerticalDivider(
-                color: Colors.black,
-                
-               ),
-              Column(
-                children: [
-                  Image(image: AssetImage('assets/image/sample-qr-code-icon-vector-260nw-529327996.webp'),
-                  height: 65,
-                  width: 65,
+          Column(
+            children: [
+              Container(height: 170,
+                width: 340,
+                color: Colors.amber,
+                child: Image(image: AssetImage('assets/image/download (2).jpeg'),
+                fit: BoxFit.fill,),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   
-                  ),
-                  Text('Key')
-                ],
-              ),
-              
-               ],
-             ),
-             
-             ),
-             SizedBox(height: 30,),
-             Divider(color: Colors.black,),
-            Row(children: [
-               Padding(
-                 padding: const EdgeInsets.only(top: 60,),
-                 child: InkWell(
-                   child: Container(
-                    child: Center(child: Text('Due Details',
-                    style: TextStyle(color: Colors.white),
-                    )),
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 118, 117, 117),
-                      borderRadius: BorderRadius.circular(10),
+                  children: [
+                    SizedBox(height: 30,),
+                  Text('Rent Amount :'),
+                  SizedBox(height: 10,),
+                  Text('Property code :'),
+                  SizedBox(height: 10,),
+                  Text('Contract Renewal Date :'),
+                  SizedBox(height: 10,),
+                  Text('Checkin Date :'),
+                  SizedBox(height: 10,),
+                  Text('Checkout Date :')
+                  ],),
+                 
+                  Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 30,),
+                    Text('SAR 35,000.00'),
+                    SizedBox(height: 10,),
+                  Text('#REG15675'),
+                  SizedBox(height: 10,),
+                  Text('2022-01-31'),
+                  SizedBox(height: 10,),
+                  Text('2022-05-31'),
+                  SizedBox(height: 10,),
+                  Text('2022-11-21'),
+                  ],)
+                  
+                  ],),
+                 SizedBox(
+                  height: 60,
+                  child: Divider(color: Colors.black,)),
+                 IntrinsicHeight(
+                 child: 
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                  Text('view contract'),
+                   VerticalDivider(
+                    color: Colors.black,
+                    
+                   ),
+                  Column(
+                    children: [
+                      Image(image: AssetImage('assets/image/sample-qr-code-icon-vector-260nw-529327996.webp'),
+                      height: 65,
+                      width: 65,
                       
-                    ),
-                    height: 50,
-                    width: 160,
-                              ),onTap: () {
-                                Navigator.push(
-                                  context,MaterialPageRoute
-                                  (builder: (context)=>details()));
-                              },
-                 ),
-               ),
-             Padding(
-               padding: const EdgeInsets.only(top: 60,left: 20),
-               child: InkWell(
-                 child: Container(
-                  child: Center(child:
-                   Text('view Payment History',style: TextStyle(
-                  color: Colors.white),)),
-                  decoration: BoxDecoration(
-                   color: const Color.fromARGB(255, 26, 71, 27),
-                   borderRadius: BorderRadius.circular(10)
+                      ),
+                      Text('Key')
+                    ],
                   ),
-                  height: 50,
-                  width: 160,
                   
-                 ),onTap: () {
-                   Navigator.push(
-                    context, MaterialPageRoute(
-                      builder: (context)=>paymenthistory()));
-                 },
-               ),
-             )
-            ],)
-            
+                   ],
+                 ),
+                 
+                 ),
+                 SizedBox(height: 30,),
+                 Divider(color: Colors.black,),
+                Padding(
+                               padding: const EdgeInsets.only(top: 40,right:20),
+                               child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                Align(alignment: Alignment.bottomLeft,
+                                                    child: ElevatedButton(
+                                style: ButtonStyle(
+                                fixedSize: MaterialStatePropertyAll(Size(140,40)),
+                                backgroundColor: MaterialStatePropertyAll(
+                                  
+                                  const Color.fromARGB(255, 34, 84, 36)),
+                                  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                                    borderRadius: BorderRadiusDirectional.circular(10)
+                                  )),
+                                  
+                                ),
+                                onPressed: (){
+                                  
+                               Navigator.push(context, MaterialPageRoute(builder: (context)=>details()));
+                                                     }, child: Text('Due details')),
+                                                  ),
+                                                 
+                                                     Align(alignment: Alignment.bottomLeft,
+                                                    child: ElevatedButton(
+                                style: ButtonStyle(
+                                  
+                                backgroundColor: MaterialStatePropertyAll(Colors.grey),
+                                  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                                    borderRadius: BorderRadiusDirectional.circular(10)
+                                  ))
+                                ),
+                                onPressed: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>paymenthistory()));
+                                                     }, child: Text(' view Payment history')),
+                                                  ),
+                                                     ],),
+                             )
+            ],
+          ),
         ],
       ),
     ),

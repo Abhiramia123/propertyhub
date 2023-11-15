@@ -8,6 +8,12 @@ class details extends StatefulWidget {
 }
 
 class _detailsState extends State<details> {
+  
+  final date=['01-05-2022','01-01-2022','07-02-2022'];
+  final amount=['SAR 6,667.00','SAR 6,667.00','SAR 6,667.00'];
+  final paid=['SAR 2,000.00','SAR 0','SAR 0'];
+  final balance=['SAR 4,667.00','SAR 6,667.00','SAR 6,667.00'];
+  final status=['Partially paid','Unpaid','Unpaid'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(
@@ -29,25 +35,67 @@ class _detailsState extends State<details> {
               ) ,
               child: Padding(
                 padding: const EdgeInsets.only(top: 20,left: 10),
+               
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  
                   children: [
-                    Row(children: [Text('Due Date:'),
-                    Text('01-01-2022',style: TextStyle(fontWeight: FontWeight.bold),),
+                    Row(children: [Text('Due Date : '),
+                    Text(date[index],style: TextStyle(fontWeight: FontWeight.bold),),
+                    SizedBox(height: 20,)
+                    
                     
                     ],),
-                    Text('Due Date:'),
-                  SizedBox(height: 10),
-                  Text('Due Amount:'),
-                   SizedBox(height: 10),
-                  Text('Paid:'),
-                   SizedBox(height: 10),
-                  Text('Balance:'),
-                   SizedBox(height: 10),
-                  Text('Status:')
+                    Row(children: [Text('Due Amount : '),
+                    Text(amount[index],style: TextStyle(fontWeight: FontWeight.bold),),
+                    SizedBox(height: 25,)
+                    ],),
+                    Row(children: [Text('Paid : '),
+                    Text(paid[index],style: TextStyle(fontWeight: FontWeight.bold),),
+                    SizedBox(height: 25,)
+                    ],),
+                     Row(children: [Text('balance : '),
+                    Text(balance[index],style: TextStyle(fontWeight: FontWeight.bold),),
+                    SizedBox(height: 25,)
+                    ],),
+                     Row(children: [Text('status : '),
+                    Text(status[index],style: TextStyle(fontWeight: FontWeight.bold,
+                    color: Colors.red),),
+                    SizedBox(height: 25,)
+                    ],),
+                    Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 20),
+                          child: ElevatedButton(
+                           style: ButtonStyle(
+                              fixedSize: MaterialStatePropertyAll(Size(130,40)),
+                            backgroundColor: MaterialStatePropertyAll(const Color.fromARGB(255, 30, 83, 31),
+                            
+                            ),
+                           
+                              shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                                borderRadius: BorderRadiusDirectional.circular(10)
+                              ))
+                            ),
+                            onPressed: (){
+                           
+                          }, child: Text('pay Now'),
+                           
+                          ),
+                        ),
+                      ],
+                    )
+                    
+                 
+                 
                   ],),
                   
+                  
               ),
+              
+              
               
               ),
             ),

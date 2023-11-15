@@ -34,37 +34,70 @@ class _profileState extends State<profile> {
                  Container(height: 600,
                  width: double.infinity,
                  color: Colors.white),
-                 Row(children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 80,left: 30),
-                      child: Container(
-                     height:40,
-                        width: 150,
+                //  Align(alignment: Alignment.topCenter,
+                //  child: CircleAvatar(backgroundImage: AssetImage('assets/image/download (1).jpeg'),
+                //  radius: 50,
+                //  ),),
+                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 50,right: 20),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                       backgroundColor: MaterialStatePropertyAll(const Color.fromARGB(255, 161, 156, 156)),
+                        shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                          borderRadius: BorderRadiusDirectional.circular(20),
+                          
+                        ))
+                      ),
+                      onPressed: (){
+                  
+                    }, child: Text('Change image')),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top:50,right:40),
+                    child: ElevatedButton(
+                     style: ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(const Color.fromARGB(255, 30, 83, 31)),
+                        shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                          borderRadius: BorderRadiusDirectional.circular(20)
+                        ))
+                      ),
+                      onPressed: (){
+                  
+                    }, child: Text('Remove')),
+                  )
+                    // Padding(
+                    //   padding: const EdgeInsets.only(top: 80,left: 30),
+            //           child: Container(
+            //          height:40,
+            //             width: 150,
                                  
-                      decoration: BoxDecoration(
-                       color: const Color.fromARGB(255, 21, 71, 23),
-                        borderRadius: BorderRadius.circular(30)),
-                         child: Center(child: Text('Change image',
-                           style: TextStyle(fontSize: 17,
-                           color: Colors.white),)),
+            //           decoration: BoxDecoration(
+            //            color: const Color.fromARGB(255, 21, 71, 23),
+            //             borderRadius: BorderRadius.circular(30)),
+            //              child: Center(child: Text('Change image',
+            //                style: TextStyle(fontSize: 17,
+            //                color: Colors.white),)),
 
 
-                                 ),
-                    ),
-             Padding(
-               padding: const EdgeInsets.only(top: 80,left:30),
-               child: Container(height: 40,
-               width: 120,
+            //                      ),
+            //         ),
+            //  Padding(
+            //    padding: const EdgeInsets.only(top: 80,left:30),
+            //    child: Container(height: 40,
+            //    width: 120,
                
-               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 129, 128, 128),
-                borderRadius: BorderRadius.circular(30)),
-                child: Center(child: Text('Remove',
-                style: TextStyle(fontSize: 17,
-                color: Colors.white),)),
+            //    decoration: BoxDecoration(
+            //     color: const Color.fromARGB(255, 129, 128, 128),
+            //     borderRadius: BorderRadius.circular(30)),
+            //     child: Center(child: Text('Remove',
+            //     style: TextStyle(fontSize: 17,
+            //     color: Colors.white),)),
 
-               ),
-             ),
+            //    ),
+            //  ),
                  ],),
                  Column(
                  children: [Padding(
@@ -118,20 +151,20 @@ class _profileState extends State<profile> {
                                      ),),
                    ),
                    Padding(
-                     padding: const EdgeInsets.only(top: 20,
-                     right: 210),
-                     child: Container(
-                      height: 45,
-                     width: 120,
-                        
-                     decoration: BoxDecoration(
-                       color: Color.fromARGB(255, 125, 121, 121),
-                      borderRadius: BorderRadius.circular(10)),
-                      child: Center(child: Text('update',
-                      style: TextStyle(fontSize: 18,
-                      color: Colors.white),)),
+                     padding: const EdgeInsets.only(left: 10),
+                     child: Align(alignment: Alignment.bottomLeft,
+                       child: ElevatedButton(
+                          style: ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(Colors.grey),
+                            shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                              borderRadius: BorderRadiusDirectional.circular(10)
+                            ))
+                          ),
+                          onPressed: (){
+                         
+                        }, child: Text('Update')),
                      ),
-                   ),
+                   )
                    
                                ],
                                
@@ -140,11 +173,14 @@ class _profileState extends State<profile> {
              ),
               ],
               ),
-              Positioned(
-                top: 50,left:140,
-                child: CircleAvatar(radius: 50,
-                backgroundImage: AssetImage('assets/image/download (1).jpeg'),
-                )),
+              Align(alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 50),
+                  child: CircleAvatar(radius: 50,
+                  backgroundImage: AssetImage('assets/image/download (1).jpeg'),
+                  ),
+                ),
+              ),
                 
                 
             ],
