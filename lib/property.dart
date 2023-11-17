@@ -69,23 +69,22 @@ class _propertyState extends State<property> {
                      
                    ),
                     Row(mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Padding(
-                        padding: const EdgeInsets.only(right: 30),
-                        child: InkWell(
-                          child: Text('Pay Now',
-                           style: TextStyle(fontSize: 15,
-                           color: Color.fromARGB(255, 11, 51, 85),
-                           decoration: TextDecoration.underline
-                           ),
-                           ),
-                           onTap: () {
-                             Navigator.push(context,MaterialPageRoute(
-                              builder: (context)=>payment()
-
-                             ));
-                           },
-                        ),
-                      )],),
+                    children: [TextButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>payment()));
+                    }, child: Text('Pay now',style: TextStyle(fontSize: 15,
+                    decoration: TextDecoration.underline
+                    ),))],
+                      // children: [Padding(
+                      //   padding: const EdgeInsets.only(right: 30),
+                      //   child: Text('Pay Now',
+                      //    style: TextStyle(fontSize: 15,
+                      //    color: Color.fromARGB(255, 11, 51, 85),
+                      //    decoration: TextDecoration.underline
+                      //    ),
+                      //    ),
+                      // )
+                      // ],
+                      ),
 
                        Padding(
                          padding: const EdgeInsets.only(top: 20,right:50),

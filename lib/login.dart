@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:propertyhubflutter/home.dart';
+import 'package:propertyhubflutter/otp.dart';
 import 'package:propertyhubflutter/register.dart';
 
 class loginscreen extends StatefulWidget {
@@ -78,7 +79,7 @@ class _loginState extends State<loginscreen> {
             ),
              onTap: () {
                        Navigator.push(context,MaterialPageRoute(
-                        builder: (context)=>home()));
+                        builder: (context)=>otp()));
                      },
           ),
           ),

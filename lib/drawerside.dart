@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:propertyhubflutter/list.dart';
 import 'package:propertyhubflutter/notification.dart';
+import 'package:propertyhubflutter/profile.dart';
+import 'package:propertyhubflutter/property.dart';
 
 class drawerside extends StatelessWidget {
   const drawerside({
@@ -68,32 +71,30 @@ class drawerside extends StatelessWidget {
               leading:  Icon(Icons.person),
               title:  Text(' My Profile '),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>profile()));
               },
             ),
              ListTile(
               leading: Icon(Icons.house),
               title:  Text('My property '),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>property()));
               },
             ),
              ListTile(
               leading:  Icon(Icons.key),
               title:  Text(' List property '),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>list()));
               },
             ),
-             InkWell(
-               child: ListTile(
-                leading: Icon(Icons.notifications),
-                title:  Text(' Notification '),
-                onTap: () {
-                  Navigator.push(context,MaterialPageRoute(builder: (context)=>notification()));
-                },
-                         ),
-             ),
+             ListTile(
+              leading: Icon(Icons.notifications),
+              title:  Text(' Notification '),
+              onTap: () {
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>notification()));
+              },
+                       ),
             Divider(color: Colors.black,
             indent: 15,
             endIndent: 15,),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:propertyhubflutter/drawerside.dart';
 import 'package:propertyhubflutter/list.dart';
+import 'package:propertyhubflutter/notification.dart';
 import 'package:propertyhubflutter/profile.dart';
 import 'package:propertyhubflutter/property.dart';
 
@@ -26,7 +27,12 @@ class _homescreenState extends State<home> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 31, 74, 32),
         title: Center(child: Text('Property Hub')),
-        actions: [Icon(Icons.notifications)],
+        actions: [InkWell(child: Icon(Icons.notifications),
+        onTap: () {
+          Navigator.push(context,MaterialPageRoute(builder: (context)=>notification()));
+        },
+        ),
+        ],
       ),
       drawer: drawerside(),
       body: Container(

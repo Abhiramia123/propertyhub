@@ -16,7 +16,9 @@ class _notificationState extends State<notification> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 33, 86, 35),
         title: Text('Notification'),),
-        body: ListView.builder(itemBuilder:(context,index){
+        body: ListView.builder(
+          itemCount: 10,
+          itemBuilder:(context,index){
           return SizedBox(height:150,
           width: double.infinity,
           child: 
@@ -28,7 +30,7 @@ class _notificationState extends State<notification> {
                          child: Padding(
                            padding: const EdgeInsets.only(top:30,),
                            child: Container(
-                           height: 85,
+                           height: 90,
                            color: Colors.white,
                            child: Image(image: AssetImage('assets/image/icons8-building-100.png',),
                            ),
@@ -42,7 +44,14 @@ class _notificationState extends State<notification> {
                              padding: const EdgeInsets.only(left:10),
                              child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [Text('dd')],
+                              children: [Text('Service has been set aside for inspection',
+                              style: TextStyle(fontWeight: FontWeight.bold,fontSize:15),),
+                              SizedBox(height: 10,),
+                              Text('service has been set aside for inspection.order id:-9inspector :_Salmanphone number:-045676...thanks!',
+                              style: TextStyle(fontSize: 10),),
+                              SizedBox(height: 10,),
+                              Text('1 month',style: TextStyle(fontSize: 10),)
+                              ],
                              ))))                 
             
             ],)

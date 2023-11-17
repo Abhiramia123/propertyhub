@@ -9,6 +9,9 @@ class list extends StatefulWidget {
 
 class _listState extends State<list> {
   final relation = "agent";
+  final name=TextEditingController();
+  final phone=TextEditingController();
+  final email=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +32,7 @@ class _listState extends State<list> {
                 Padding(
                   padding: const EdgeInsets.only(top:10,left: 10,right: 10),
                   child: TextField(
+                    controller: name,
                      decoration: InputDecoration(
                       border: OutlineInputBorder(
                       
@@ -40,6 +44,7 @@ class _listState extends State<list> {
                       Padding(
                        padding: const EdgeInsets.only(top: 10,left: 10,right: 10),
                       child: TextField(
+                        controller: phone,
                       decoration: InputDecoration(
                        border: OutlineInputBorder(
                              ),
@@ -49,6 +54,7 @@ class _listState extends State<list> {
                         Padding(
                           padding: const EdgeInsets.only(top: 10,left: 10,right: 10),
                           child: TextField(
+                            controller: email,
                                        decoration: InputDecoration(
                                         border: OutlineInputBorder(
                                         
