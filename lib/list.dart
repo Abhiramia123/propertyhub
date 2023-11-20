@@ -176,7 +176,9 @@ class _listState extends State<list> {
                                                     borderRadius: BorderRadiusDirectional.circular(10)
                                                                              ))
                                                                            ),
-                                              onPressed: (){}, child: Text('Discard')),
+                                              onPressed: (){
+                                                Navigator.pop(context);
+                                              }, child: Text('Discard')),
                                            )
                       ],)
               ],

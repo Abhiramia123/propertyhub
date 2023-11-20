@@ -45,7 +45,7 @@ class _notificationState extends State<notification> {
                              child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [Text('Service has been set aside for inspection',
-                              style: TextStyle(fontWeight: FontWeight.bold,fontSize:15),),
+                              style: TextStyle(fontSize:15),),
                               SizedBox(height: 10,),
                               Text('service has been set aside for inspection.order id:-9inspector :_Salmanphone number:-045676...thanks!',
                               style: TextStyle(fontSize: 10),),

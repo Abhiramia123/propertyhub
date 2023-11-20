@@ -16,7 +16,7 @@ class _listpropertyState extends State<otp> {
       
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 36, 96, 37),
-        title: Text('otp'),),
+        title: Text('OTP'),),
         body: Align(alignment: Alignment.topCenter,
           child: Column(
           children: [Padding(
@@ -74,9 +74,11 @@ class _listpropertyState extends State<otp> {
         ],),
         SizedBox(height: 30,),
         Row(mainAxisAlignment: MainAxisAlignment.center,
-        children: [Text("Did'nt receve code ? ",style: TextStyle(fontWeight: FontWeight.bold),),
+        children: [
+          Text("Did'nt receve code ? ",style: TextStyle(fontWeight: FontWeight.bold),),
         Text(" Request again ?",style: TextStyle(fontWeight: FontWeight.bold),)
-        ],),
+        ],
+        ),
         SizedBox(height: 50),
         ElevatedButton(
           style: ButtonStyle(

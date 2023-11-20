@@ -70,20 +70,26 @@ class _paymentState extends State<payment> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                  Text('view contract'),
+                  Padding(
+                    padding: const EdgeInsets.only(left:30),
+                    child: Text('view contract'),
+                  ),
                    VerticalDivider(
                     color: Colors.black,
                     
                    ),
-                  Column(
-                    children: [
-                      Image(image: AssetImage('assets/image/sample-qr-code-icon-vector-260nw-529327996.webp'),
-                      height: 65,
-                      width: 65,
-                      
-                      ),
-                      Text('Key')
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.only(right: 50),
+                    child: Column(
+                      children: [
+                        Image(image: AssetImage('assets/image/sample-qr-code-icon-vector-260nw-529327996.webp'),
+                        height: 65,
+                        width: 65,
+                        
+                        ),
+                        Text('Key')
+                      ],
+                    ),
                   ),
                   
                    ],

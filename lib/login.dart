@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:propertyhubflutter/home.dart';
+
 import 'package:propertyhubflutter/otp.dart';
 import 'package:propertyhubflutter/register.dart';
 

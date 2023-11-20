@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:propertyhubflutter/about.dart';
 import 'package:propertyhubflutter/drawerside.dart';
 import 'package:propertyhubflutter/list.dart';
 import 'package:propertyhubflutter/notification.dart';
@@ -124,6 +125,10 @@ class _homescreenState extends State<home> {
                                     Navigator.push(
                                       context,MaterialPageRoute(
                                         builder: (context)=> list()));
+                                  }else if (index == 3) {
+                                    Navigator.push(
+                                      context,MaterialPageRoute(
+                                        builder: (context)=> about()));
                                   }
                                   
                                 },
