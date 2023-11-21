@@ -12,6 +12,8 @@ class _profileState extends State<profile> {
   final email=TextEditingController();
   final mobile=TextEditingController();
   final password=TextEditingController();
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(
@@ -34,10 +36,7 @@ class _profileState extends State<profile> {
                  Container(height: 600,
                  width: double.infinity,
                  color: Colors.white),
-                //  Align(alignment: Alignment.topCenter,
-                //  child: CircleAvatar(backgroundImage: AssetImage('assets/image/download (1).jpeg'),
-                //  radius: 50,
-                //  ),),
+                
                  Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -68,36 +67,7 @@ class _profileState extends State<profile> {
                   
                     }, child: Text('Remove')),
                   )
-                    // Padding(
-                    //   padding: const EdgeInsets.only(top: 80,left: 30),
-            //           child: Container(
-            //          height:40,
-            //             width: 150,
-                                 
-            //           decoration: BoxDecoration(
-            //            color: const Color.fromARGB(255, 21, 71, 23),
-            //             borderRadius: BorderRadius.circular(30)),
-            //              child: Center(child: Text('Change image',
-            //                style: TextStyle(fontSize: 17,
-            //                color: Colors.white),)),
-
-
-            //                      ),
-            //         ),
-            //  Padding(
-            //    padding: const EdgeInsets.only(top: 80,left:30),
-            //    child: Container(height: 40,
-            //    width: 120,
-               
-            //    decoration: BoxDecoration(
-            //     color: const Color.fromARGB(255, 129, 128, 128),
-            //     borderRadius: BorderRadius.circular(30)),
-            //     child: Center(child: Text('Remove',
-            //     style: TextStyle(fontSize: 17,
-            //     color: Colors.white),)),
-
-            //    ),
-            //  ),
+                    
                  ],),
                  Column(
                  children: [Padding(

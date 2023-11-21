@@ -124,7 +124,7 @@ class _loginState extends State<loginscreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-              Image.asset('assets/image/download.png',height: 35,
+              Image.asset('assets/image/download (4).png',height: 35,
               ),SizedBox(width: 10),
               Text('Login with google',
               style: TextStyle(fontSize: 17,

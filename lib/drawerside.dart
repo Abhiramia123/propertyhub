@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:propertyhubflutter/list.dart';
+import 'package:propertyhubflutter/login.dart';
 import 'package:propertyhubflutter/notification.dart';
 import 'package:propertyhubflutter/profile.dart';
 import 'package:propertyhubflutter/property.dart';
@@ -14,26 +15,7 @@ class drawerside extends StatelessWidget {
     return Drawer(
       child: ListView(children: [
         DrawerHeader(
-              // decoration: BoxDecoration(
-              //   color: Colors.green,
-              // ),
-              // child: UserAccountsDrawerHeader(
-              //   decoration: BoxDecoration(color: Colors.green),
-              //   accountName: 
-              //   Text(
-              //     "Abdul Rahman",
-              //     style: TextStyle(fontSize: 18),
-              //   ),
-              //   accountEmail: Text("abdulrahman977@gmail.com"),
-              //   currentAccountPictureSize: Size.fromRadius(30),
-              //   currentAccountPicture: CircleAvatar(
-              //     radius: 20,
-                 
-                  // backgroundImage: AssetImage('assets/image/download (1).jpeg',
-              //     ),
-              //   ),
-                
-              //   ),
+             
               
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 40, 109, 42)
@@ -99,7 +81,42 @@ class drawerside extends StatelessWidget {
             indent: 15,
             endIndent: 15,),
             ListTile(
-              title: Text('Logout'),
+              title: TextButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (ctx) => AlertDialog(
+                 
+                  content: Text("Dou you want to logout ?"),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(ctx).pop();
+                      },
+                        child:  Row(
+                         mainAxisAlignment: MainAxisAlignment.end,
+                         
+                          children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 50),
+                            child: Text('No'),
+                          ),
+                         
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(context,MaterialPageRoute(builder: (context)=>loginscreen()));
+                            },
+                            child: Text('Yes'))
+                        ],)
+                      ),
+                    
+                  ],
+                ),
+              );
+            },
+            child:  Text("logout"),
+          ),
+
             )
       ]
               ),

@@ -150,7 +150,7 @@ class _registerscreenState extends State<registerscreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-              Image.asset('assets/image/download.png',height: 35,
+              Image.asset('assets/image/download (4).png',height: 35,
               ),SizedBox(width: 10),
               Text('Register with google',
               style: TextStyle(fontSize: 17,
