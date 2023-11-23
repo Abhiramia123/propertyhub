@@ -22,10 +22,10 @@ class _registerscreenState extends State<registerscreen> {
           colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.7),
           BlendMode.dstATop
           ),
-          image: AssetImage('assets/image/build.jpeg',
+          image: AssetImage('assets/image/build.jpg',
         
         ),fit: BoxFit.fill,
-        opacity: 1.6
+        opacity: 0.6
       ),),
       child: ListView(
         children: [

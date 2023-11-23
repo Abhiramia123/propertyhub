@@ -1,4 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:motion_toast/motion_toast.dart';
+import 'package:motion_toast/resources/arrays.dart';
+import 'package:propertyhubflutter/api.dart';
 
 import 'package:propertyhubflutter/otp.dart';
 import 'package:propertyhubflutter/register.dart';
@@ -24,10 +28,10 @@ class _loginState extends State<loginscreen> {
           colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.7),
           BlendMode.dstATop
           ),
-          image: AssetImage('assets/image/build.jpeg',
+          image: AssetImage('assets/image/build.jpg',
         
         ),fit: BoxFit.fill,
-        opacity: 1.6
+        opacity: 0.6
       ),),
       child: ListView(
         children: [
@@ -78,6 +82,7 @@ class _loginState extends State<loginscreen> {
             ),
             ),
              onTap: () {
+              loginUser();
                        Navigator.push(context,MaterialPageRoute(
                         builder: (context)=>otp()));
                      },
@@ -167,6 +172,96 @@ class _loginState extends State<loginscreen> {
     
 
     );
+  }
+  // void loginUser() async{
+  //   final _phone = mobilenumber.text;
+  //   final _otp = .Text;
+
+  //   if(_phone.isEmpty){
+  //     showErrorMessage('Please enter phone number');
+  //   }
+  //   else if (_otp.isEmpty){
+  //     showErrorMessage('Please enter otp');
+  //   }
+  //   else{
+    
+  //     final _formData = FormData.fromMap({
+  //       'phone':  _phone,
+  //       'otp' : _otp
+
+  //     });
+  //     print("$_formData");
+  //     final result = await ApiClass.loginUserApi(_formData);
+  //     if (result != null) {
+       
+  //       if (result.status == true) {
+  //         showSuccessMessage(result.phone!);
+          
+          
+  //       } else {
+          
+  //         showErrorMessage(result.phone!);
+  //       }
+  //     }
+  //   }
+  // }
+  Future<void> loginUser() async {
+    final _phone = mobilenumber.text;
+    
+
+    if (_phone.isEmpty) {
+      showErrorMessage('Please enter phonenumber');
+    } else if (_phone.isEmpty) {
+      showErrorMessage('Please enter p');
+    } else {
+      final _formdata = FormData.fromMap({
+        'username': _phone,
+        
+      });
+      final _result = await ApiClass().loginUserApi(_formdata);
+      if (_result != null) {
+        if (_result.status == 1) {
+          showSuccessMessage("successfully logged");
+        } else {
+          showErrorMessage(_result.phone!);
+        }
+      }
+    }
+  }
+   void showErrorMessage(String message) {
+    
+    MotionToast.error(
+      title: const Text(
+        'Error',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      description: Text(message),
+      position: MotionToastPosition.top,
+      barrierColor: Colors.black.withOpacity(0.3),
+      width: 300,
+      height: 80,
+      dismissable: true,
+    ).show(context);
+  }
+  void showSuccessMessage(String message) {
+    
+    MotionToast.success(
+      title: const Text(
+        'Success',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      description: Text(message),
+      position: MotionToastPosition.top,
+      barrierColor: Colors.black.withOpacity(0.3),
+      width: 300,
+      height: 80,
+      dismissable: true,
+      animationDuration: Duration(milliseconds: 3),
+    ).show(context);
   }
   
 }

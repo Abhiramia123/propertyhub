@@ -15,8 +15,10 @@ class _listpropertyState extends State<otp> {
     return Scaffold(
       
       appBar: AppBar(
+         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Color.fromARGB(255, 36, 96, 37),
-        title: Text('OTP'),),
+        title: Text('OTP',
+        style: TextStyle(color: Colors.white)),),
         body: Align(alignment: Alignment.topCenter,
           child: Column(
           children: [Padding(
@@ -91,7 +93,8 @@ class _listpropertyState extends State<otp> {
           onPressed: (){
             Navigator.push(context,MaterialPageRoute(builder: (context)=>home()));
 
-        }, child: Text('please wait for a few seconds'))
+        }, child: Text('please wait for a few seconds',
+        style: TextStyle(color: Colors.white),))
           ],
           ),
         ),

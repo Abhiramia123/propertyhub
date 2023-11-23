@@ -26,7 +26,7 @@ class drawerside extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [CircleAvatar(
                   backgroundImage: AssetImage('assets/image/download (1).jpeg'),
-                radius: 40,
+                radius: 35,
                 
                 )],
               ),
@@ -34,13 +34,13 @@ class drawerside extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 40,left: 10),
+                  padding: const EdgeInsets.only(top: 40,left:5),
                   child: Text('Abdul Rahman',
                   style: TextStyle(color: Colors.white),),
                 ),
                
                 Padding(
-                  padding: const EdgeInsets.only(top:5,left: 10),
+                  padding: const EdgeInsets.only(top:5,left: 5,),
                   child: Text('rahman977@gmail.com',
                   style: TextStyle(color: Colors.white),),
                 )

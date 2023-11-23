@@ -17,8 +17,9 @@ class _detailsState extends State<details> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(
+       iconTheme: IconThemeData(color: Colors.white),
       backgroundColor: const Color.fromARGB(255, 31, 74, 32) ,
-      title: Text('Due details'),),
+      title: Text('Due details',style: TextStyle(color: Colors.white)),),
      backgroundColor: const Color.fromARGB(255, 199, 193, 193),
       body: ListView.builder(
         itemCount: 3,
@@ -81,7 +82,7 @@ class _detailsState extends State<details> {
                             ),
                             onPressed: (){
                            
-                          }, child: Text('pay Now'),
+                          }, child: Text('pay Now',style: TextStyle(color: Colors.white)),
                            
                           ),
                         ),

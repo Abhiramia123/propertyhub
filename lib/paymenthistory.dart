@@ -14,8 +14,9 @@ class _paymenthistoryState extends State<paymenthistory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(
+       iconTheme: IconThemeData(color: Colors.white),
       backgroundColor: Color.fromARGB(255, 22, 76, 23),
-      title: Text('Payment history'),
+      title: Text('Payment history',style: TextStyle(color: Colors.white)),
     ),
    backgroundColor: Colors.white,
     body: 

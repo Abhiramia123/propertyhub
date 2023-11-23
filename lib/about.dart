@@ -13,8 +13,9 @@ class _aboutState extends State<about> {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 217, 214, 214),
       appBar: AppBar(
+         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Color.fromARGB(255, 28, 77, 30),
-        title: Text('About'),),
+        title: Text('About',style: TextStyle(color: Colors.white)),),
         body: Padding(
           padding: const EdgeInsets.only(top: 20,left: 20),
           child: ListView(
@@ -40,7 +41,7 @@ class _aboutState extends State<about> {
               ),
               
               child: SizedBox(width: 400,
-              height: 450,
+              height:450,
               child:Column(
                
                crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,7 +54,7 @@ class _aboutState extends State<about> {
                                      height:70,),
                    ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 20,left:25),
+                    padding: const EdgeInsets.only(top: 10,left:25),
                     child: Text('Real Estate?',
                     style: TextStyle(fontSize:20,
                     fontStyle: FontStyle.italic,
@@ -62,7 +63,7 @@ class _aboutState extends State<about> {
                     ),),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top:5,left: 25),
+                    padding: const EdgeInsets.only(left: 25),
                     child: Text('We have your back.',
                     style: TextStyle(fontSize:20,
                     fontStyle:FontStyle.italic,
@@ -83,7 +84,7 @@ class _aboutState extends State<about> {
                  
                   Align(alignment: Alignment.topLeft,
                   child: Padding(
-                    padding: const EdgeInsets.only(top:50,left: 25,right:20),
+                    padding: const EdgeInsets.only(top:40,left: 25,right:20),
                     child: Text('For more information please contact: websevices@propertyhub.com or please visit our websitw: https:// propertyhub.com',
                    
                     ),

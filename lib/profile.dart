@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class profile extends StatefulWidget {
   const profile({super.key});
@@ -12,13 +15,15 @@ class _profileState extends State<profile> {
   final email=TextEditingController();
   final mobile=TextEditingController();
   final password=TextEditingController();
-  
+  File? _profileImage;
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(
+       iconTheme: IconThemeData(color: Colors.white),
       backgroundColor: const Color.fromARGB(255, 27, 63, 28),
-      title: Text('user profile'),
+      title: Text('user profile',style: TextStyle(color: Colors.white)),
       
       ),
       body: ListView(
@@ -51,8 +56,8 @@ class _profileState extends State<profile> {
                         ))
                       ),
                       onPressed: (){
-                  
-                    }, child: Text('Change image')),
+                   _pickProfileImage();
+                    }, child: Text('Change image',style: TextStyle(color: Colors.white))),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top:50,right:40),
@@ -64,8 +69,8 @@ class _profileState extends State<profile> {
                         ))
                       ),
                       onPressed: (){
-                  
-                    }, child: Text('Remove')),
+                 ;
+                    }, child: Text('Remove',style: TextStyle(color: Colors.white))),
                   )
                     
                  ],),
@@ -132,7 +137,7 @@ class _profileState extends State<profile> {
                           ),
                           onPressed: (){
                          
-                        }, child: Text('Update')),
+                        }, child: Text('Update',style: TextStyle(color: Colors.white),)),
                      ),
                    )
                    
@@ -146,10 +151,14 @@ class _profileState extends State<profile> {
               Align(alignment: Alignment.topCenter,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 50),
-                  child: CircleAvatar(radius: 50,
-                  backgroundImage: AssetImage('assets/image/download (1).jpeg'),
-                  ),
-                ),
+                  child: _profileImage == null? 
+                  CircleAvatar(radius: 50,
+                  backgroundColor: Colors.grey,
+                 
+                  ):CircleAvatar(radius: 50,
+                  backgroundImage: FileImage(_profileImage!),)
+                
+                )
               ),
                 
                 
@@ -159,4 +168,47 @@ class _profileState extends State<profile> {
       ),
       );
   }
+    Future<void> _pickProfileImage() async {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              ListTile(
+                leading: Icon(Icons.photo),
+                title: Text('Choose from Gallery'),
+                onTap: () {
+                  _getImage(ImageSource.gallery);
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.camera),
+                title: Text('Take a Photo'),
+                onTap: () {
+                  _getImage(ImageSource.camera);
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+   Future<void> _getImage(ImageSource source) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: source);
+
+    if (pickedFile != null) {
+      setState(() {
+        _profileImage = File(pickedFile.path);
+      });
+    }
+  }
+
+
 }

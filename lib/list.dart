@@ -17,8 +17,9 @@ class _listState extends State<list> {
     return Scaffold(
       
       appBar: AppBar(
+         iconTheme: IconThemeData(color: Colors.white),
          backgroundColor: const Color.fromARGB(255, 31, 74, 32),
-        title: Text('List property'),),
+        title: Text('List property',style: TextStyle(color: Colors.white)),),
         body: ListView(
           children: [
             Column(
@@ -151,34 +152,33 @@ class _listState extends State<list> {
                         
                         children: [
                          Align(alignment: Alignment.bottomLeft,
-                             child: Padding(
-                                padding: const EdgeInsets.only(top: 10,left: 10),
-                                 child: ElevatedButton(
-                                   style: ButtonStyle(
+                         child: Padding(
+                         padding: const EdgeInsets.only(top: 10,left: 10),
+                           child: ElevatedButton(
+                             style: ButtonStyle(
+                            fixedSize: MaterialStatePropertyAll(Size(130,40)),
+                              backgroundColor: MaterialStatePropertyAll(Color.fromARGB(255, 38, 95, 39)),
+                               shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                                 borderRadius: BorderRadiusDirectional.circular(10)
+                                   ))
+                                     ),
+                                   onPressed: (){               
+                                   }, child: Text(' Request',style: TextStyle(color: Colors.white))),
+                                      ),
+                                     ),
+                                   Padding(
+                                  padding: const EdgeInsets.only(left: 20,top: 10),
+                                   child: ElevatedButton(
+                                     style: ButtonStyle(
                                      fixedSize: MaterialStatePropertyAll(Size(100,40)),
-                                         backgroundColor: MaterialStatePropertyAll(Color.fromARGB(255, 38, 95, 39)),
-                                            shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                                             borderRadius: BorderRadiusDirectional.circular(10)
-                                                      ))
-                                                          ),
-                                                    onPressed: (){
-                                                                                    
-                                                                                                 }, child: Text(' Request')),
-                                                    ),
+                                    backgroundColor: MaterialStatePropertyAll(Colors.grey),
+                                    shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                                       borderRadius: BorderRadiusDirectional.circular(10)
+                                             ))
                                             ),
-                                           Padding(
-                                             padding: const EdgeInsets.only(left: 20,top: 10),
-                                             child: ElevatedButton(
-                                              style: ButtonStyle(
-                                                fixedSize: MaterialStatePropertyAll(Size(100,40)),
-                                                 backgroundColor: MaterialStatePropertyAll(Colors.grey),
-                                                  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                                                    borderRadius: BorderRadiusDirectional.circular(10)
-                                                                             ))
-                                                                           ),
                                               onPressed: (){
                                                 Navigator.pop(context);
-                                              }, child: Text('Discard')),
+                                              }, child: Text('Discard',style: TextStyle(color: Colors.white))),
                                            )
                       ],)
               ],

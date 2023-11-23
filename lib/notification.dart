@@ -14,8 +14,9 @@ class _notificationState extends State<notification> {
     return Scaffold(
       
       appBar: AppBar(
+         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: const Color.fromARGB(255, 33, 86, 35),
-        title: Text('Notification'),),
+        title: Text('Notification',style: TextStyle(color: Colors.white)),),
         body: ListView.builder(
           itemCount: 10,
           itemBuilder:(context,index){
@@ -28,10 +29,10 @@ class _notificationState extends State<notification> {
               Expanded(
                         flex: 1,
                          child: Padding(
-                           padding: const EdgeInsets.only(top:30,),
+                           padding: const EdgeInsets.only(top:20,),
                            child: Container(
                            height: 90,
-                           color: Colors.white,
+                           
                            child: Image(image: AssetImage('assets/image/icons8-building-100.png',),
                            ),
                            ),

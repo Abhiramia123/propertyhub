@@ -12,7 +12,9 @@ class payment extends StatefulWidget {
 class _paymentState extends State<payment> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text('1'),
+    return Scaffold(appBar: AppBar(
+       iconTheme: IconThemeData(color: Colors.white),
+      title: Text('1',style: TextStyle(color: Colors.white)),
     backgroundColor: const Color.fromARGB(255, 26, 67, 27),
     ),
     body: Padding(
@@ -106,7 +108,7 @@ class _paymentState extends State<payment> {
                                 Align(alignment: Alignment.bottomLeft,
                                                     child: ElevatedButton(
                                 style: ButtonStyle(
-                                fixedSize: MaterialStatePropertyAll(Size(140,40)),
+                                fixedSize: MaterialStatePropertyAll(Size(130,40)),
                                 backgroundColor: MaterialStatePropertyAll(
                                   
                                   const Color.fromARGB(255, 34, 84, 36)),
@@ -118,7 +120,7 @@ class _paymentState extends State<payment> {
                                 onPressed: (){
                                   
                                Navigator.push(context, MaterialPageRoute(builder: (context)=>details()));
-                                                     }, child: Text('Due details')),
+                                                     }, child: Text('Due details',style: TextStyle(color: Colors.white))),
                                                   ),
                                                  
                                                      Align(alignment: Alignment.bottomLeft,
@@ -132,7 +134,7 @@ class _paymentState extends State<payment> {
                                 ),
                                 onPressed: (){
                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>paymenthistory()));
-                                                     }, child: Text(' view Payment history')),
+                                                     }, child: Text(' view Payment history',style: TextStyle(color: Colors.white))),
                                                   ),
                                                      ],),
                              )

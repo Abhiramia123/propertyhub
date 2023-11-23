@@ -17,8 +17,9 @@ class _propertyState extends State<property> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(
+       iconTheme: IconThemeData(color: Colors.white),
       backgroundColor: Color.fromARGB(255, 28, 72, 30),
-      title: Text(' My properties'),),
+      title: Text(' My properties',style: TextStyle(color: Colors.white)),),
       backgroundColor: Color.fromARGB(255, 224, 220, 220),
       body: ListView.builder(
         itemCount: img.length,
@@ -87,7 +88,7 @@ class _propertyState extends State<property> {
                       ),
 
                        Padding(
-                         padding: const EdgeInsets.only(top: 20,right:50),
+                         padding: const EdgeInsets.only(top: 20,right:40),
                          child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -101,7 +102,7 @@ class _propertyState extends State<property> {
                           ),
                           onPressed: (){
                          
-                                               }, child: Text('Service Request')),
+                                               }, child: Text('Service Request',style: TextStyle(color: Colors.white))),
                                             ),
                                            
                                                Align(alignment: Alignment.bottomLeft,
@@ -114,7 +115,7 @@ class _propertyState extends State<property> {
                           ),
                           onPressed: (){
                          
-                                               }, child: Text('vacate Request')),
+                                               }, child: Text('vacate Request',style: TextStyle(color: Colors.white))),
                                             ),
                                                ],),
                        )

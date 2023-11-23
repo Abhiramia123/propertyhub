@@ -26,9 +26,10 @@ class _homescreenState extends State<home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: const Color.fromARGB(255, 31, 74, 32),
-        title: Center(child: Text('Property Hub')),
-        actions: [InkWell(child: Icon(Icons.notifications),
+        title: Center(child: Text('Property Hub',style: TextStyle(color: Colors.white))),
+        actions: [InkWell(child: Icon(Icons.notifications,),
         onTap: () {
           Navigator.push(context,MaterialPageRoute(builder: (context)=>notification()));
         },
@@ -115,7 +116,7 @@ class _homescreenState extends State<home> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => profile()));
+                                            builder: (context) => profile(),));
                                   } else if (index == 1) {
                                     Navigator.push(
                                         context,
