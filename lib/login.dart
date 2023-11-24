@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
-import 'package:propertyhubflutter/api.dart';
+import 'package:propertyhubflutter/api/api.dart';
 
 import 'package:propertyhubflutter/otp.dart';
 import 'package:propertyhubflutter/register.dart';
@@ -81,10 +81,12 @@ class _loginState extends State<loginscreen> {
                      style: TextStyle(color: Colors.white),)
             ),
             ),
-             onTap: () {
-              loginUser();
-                       Navigator.push(context,MaterialPageRoute(
-                        builder: (context)=>otp()));
+             onTap: () { 
+             
+                      //  Navigator.push(context,MaterialPageRoute(
+                      //   builder: (context)=>otp()));
+                         loginUser();
+                         
                      },
           ),
           ),
@@ -210,20 +212,21 @@ class _loginState extends State<loginscreen> {
     
 
     if (_phone.isEmpty) {
+     
       showErrorMessage('Please enter phonenumber');
-    } else if (_phone.isEmpty) {
-      showErrorMessage('Please enter p');
-    } else {
+    } 
+    
+     else {
       final _formdata = FormData.fromMap({
-        'username': _phone,
+        'phone': _phone,
         
       });
-      final _result = await ApiClass().loginUserApi(_formdata);
-      if (_result != null) {
-        if (_result.status == 1) {
+      final result = await ApiClass().loginUserApi(_formdata);
+      if (result != null) {
+        if (result.status == 200) {
           showSuccessMessage("successfully logged");
         } else {
-          showErrorMessage(_result.phone!);
+          showErrorMessage("usernotfound");
         }
       }
     }
@@ -246,9 +249,10 @@ class _loginState extends State<loginscreen> {
     ).show(context);
   }
   void showSuccessMessage(String message) {
-    
+    Navigator.push(context,MaterialPageRoute(
+                        builder: (context)=>otp()));
     MotionToast.success(
-      title: const Text(
+      title: Text(
         'Success',
         style: TextStyle(
           fontWeight: FontWeight.bold,
