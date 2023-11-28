@@ -3,10 +3,11 @@
 
 import 'package:dio/dio.dart';
 import 'package:propertyhubflutter/model.dart/loginmodel.dart';
-import 'package:propertyhubflutter/model.dart/otpmodel.dart';
-
-
+import 'package:propertyhubflutter/model.dart/otpmodal.dart';
+import 'package:propertyhubflutter/model.dart/prfilemodal.dart';
+import 'package:propertyhubflutter/model.dart/updatemodal.dart';
 import 'package:propertyhubflutter/url.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiClass {
   static ApiClass instance = ApiClass();
@@ -40,6 +41,35 @@ class ApiClass {
       final _result = await dio.post(Url.otp,
       data:formData );
       return otpclass.fromJson((_result.data));
+    }on DioException catch (e) {
+      print(e);
+    } catch(e) {
+      print(e);
+    }
+  }
+  Future<profiledata?> profileUserApi() async {
+    SharedPreferences share = await SharedPreferences.getInstance();
+    var token = share.getString('token');
+    final result = await dio.get(Url.baseUrl + Url.profiles,
+        options: Options(headers: {
+          'Content': 'application/json',
+          'Accepts': 'application/json',
+          'Authorization': 'Bearer $token '
+        }));
+    return profiledata.fromJson((result.data)) ;
+  }
+   Future<updatedata?> UpdateUserApi(FormData formData)
+  async{
+     SharedPreferences share = await SharedPreferences.getInstance();
+    var token = share.getString('token');
+    try {
+      final _result = await dio.post(Url.update,
+      data:formData , options: Options(headers: {
+          'Content': 'application/json',
+          'Accepts': 'application/json',
+          'Authorization': 'Bearer $token '
+        }));
+      return updatedata.fromJson((_result.data));
     }on DioException catch (e) {
       print(e);
     } catch(e) {

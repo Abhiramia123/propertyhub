@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:propertyhubflutter/login.dart';
 
 void main(List<String> args) {
-  runApp(Myapp());
+  runApp(MyApp());
 }
-class Myapp extends StatelessWidget {
-  const Myapp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {

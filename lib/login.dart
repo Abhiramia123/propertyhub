@@ -82,10 +82,11 @@ class _loginState extends State<loginscreen> {
             ),
             ),
              onTap: () { 
+               loginUser();
              
                       //  Navigator.push(context,MaterialPageRoute(
                       //   builder: (context)=>otp()));
-                         loginUser();
+                        
                          
                      },
           ),
@@ -175,51 +176,15 @@ class _loginState extends State<loginscreen> {
 
     );
   }
-  // void loginUser() async{
-  //   final _phone = mobilenumber.text;
-  //   final _otp = .Text;
-
-  //   if(_phone.isEmpty){
-  //     showErrorMessage('Please enter phone number');
-  //   }
-  //   else if (_otp.isEmpty){
-  //     showErrorMessage('Please enter otp');
-  //   }
-  //   else{
-    
-  //     final _formData = FormData.fromMap({
-  //       'phone':  _phone,
-  //       'otp' : _otp
-
-  //     });
-  //     print("$_formData");
-  //     final result = await ApiClass.loginUserApi(_formData);
-  //     if (result != null) {
-       
-  //       if (result.status == true) {
-  //         showSuccessMessage(result.phone!);
-          
-          
-  //       } else {
-          
-  //         showErrorMessage(result.phone!);
-  //       }
-  //     }
-  //   }
-  // }
+  
   Future<void> loginUser() async {
     final _phone = mobilenumber.text;
-    
-
     if (_phone.isEmpty) {
-     
       showErrorMessage('Please enter phonenumber');
     } 
-    
      else {
       final _formdata = FormData.fromMap({
         'phone': _phone,
-        
       });
       final result = await ApiClass().loginUserApi(_formdata);
       if (result != null) {
@@ -232,7 +197,6 @@ class _loginState extends State<loginscreen> {
     }
   }
    void showErrorMessage(String message) {
-    
     MotionToast.error(
       title: const Text(
         'Error',

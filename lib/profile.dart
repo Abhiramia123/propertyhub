@@ -1,7 +1,12 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:motion_toast/motion_toast.dart';
+import 'package:motion_toast/resources/arrays.dart';
+import 'package:propertyhubflutter/api/api.dart';
+import 'package:propertyhubflutter/model.dart/updatemodal.dart';
 
 class profile extends StatefulWidget {
   const profile({super.key});
@@ -11,15 +16,26 @@ class profile extends StatefulWidget {
 }
 
 class _profileState extends State<profile> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    profileuser();
+   
+    
+  }
+  
   final name=TextEditingController();
   final email=TextEditingController();
   final mobile=TextEditingController();
-  final password=TextEditingController();
+  final address=TextEditingController();
   File? _profileImage;
 
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(appBar: AppBar(
        iconTheme: IconThemeData(color: Colors.white),
       backgroundColor: const Color.fromARGB(255, 27, 63, 28),
@@ -116,12 +132,12 @@ class _profileState extends State<profile> {
                      padding: const EdgeInsets.only(top:10, left: 10,
                    right: 10,),
                      child: TextField(
-                      controller: password,
+                      controller: address,
                       decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10)
                                      ),
-                                     hintText: 'Password'
+                                     hintText: 'Address'
                                      
                                      ),),
                    ),
@@ -136,7 +152,7 @@ class _profileState extends State<profile> {
                             ))
                           ),
                           onPressed: (){
-                         
+                        updateuser();
                         }, child: Text('Update',style: TextStyle(color: Colors.white),)),
                      ),
                    )
@@ -209,6 +225,75 @@ class _profileState extends State<profile> {
       });
     }
   }
+ Future<void> profileuser() async {
+    final result = await ApiClass().profileUserApi();
+    setState(() {
+     name.text = result!.data!.name.toString();
+     email.text = result.data!.email.toString();
+     mobile.text = result.data!.phone.toString();
+     address.text = result.data!.address.toString();
+    });
+   }
+   Future<void> updateuser() async {
+   final _Name = name.text;
+    final _mail = email.text;
+     final _phone = mobile.text;
+     final _place = address.text;
 
+    if (_phone.isEmpty) {
+      showErrorMessage('Please enter phonenumber');
+    } 
+     else {
+      final _formdata = FormData.fromMap({
+       'name': _Name,
+       'email': _mail,
+        'phone': _phone,
+        'address': _place,
+      });
+      final result = await ApiClass().UpdateUserApi(_formdata);
+      if (result != null) {
+        if (result.status == 200) {
+          showSuccessMessage("successfully updated");
+        } else {
+          showErrorMessage("usernotfound");
+        }
+      }
+    }
+  }
+   void showErrorMessage(String message) {
+    MotionToast.error(
+      title: const Text(
+        'Error',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      description: Text(message),
+      position: MotionToastPosition.top,
+      barrierColor: Colors.black.withOpacity(0.3),
+      width: 300,
+      height: 80,
+      dismissable: true,
+    ).show(context);
+  }
+  void showSuccessMessage(String message) {
+   
+    MotionToast.success(
+      title: Text(
+        'Success',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      description: Text(message),
+      position: MotionToastPosition.top,
+      barrierColor: Colors.black.withOpacity(0.3),
+      width: 300,
+      height: 80,
+      dismissable: true,
+      animationDuration: Duration(milliseconds: 3),
+    ).show(context);
+  }
+  
+   }
 
-}

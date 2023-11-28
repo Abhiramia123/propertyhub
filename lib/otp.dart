@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
+import 'package:propertyhubflutter/Sharedprf.dart';
 import 'package:propertyhubflutter/api/api.dart';
 import 'package:propertyhubflutter/home.dart';
 
@@ -18,6 +19,9 @@ class otp extends StatefulWidget {
 class _listpropertyState extends State<otp> {
   final phone = TextEditingController();
   final code = TextEditingController();
+  final code1 = TextEditingController();
+  final code2 = TextEditingController();
+  final code3 = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,9 +49,11 @@ class _listpropertyState extends State<otp> {
               Row(children: [
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(left:30,right: 10),
+                    padding: EdgeInsets.only(left:30,right: 10),
                     
-                    child: TextField(decoration: InputDecoration(border: OutlineInputBorder(
+                    child: TextField(
+                      controller: code,
+                      decoration: InputDecoration(border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)
                             ))
                             ),
@@ -56,8 +62,10 @@ class _listpropertyState extends State<otp> {
                
                       , Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(left: 25,right:15),
-                child: TextField(decoration: InputDecoration(border: OutlineInputBorder(
+                padding: EdgeInsets.only(left: 25,right:15),
+                child: TextField(
+                  controller: code1,
+                  decoration: InputDecoration(border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10)
                 ))
                 ),
@@ -65,8 +73,10 @@ class _listpropertyState extends State<otp> {
                       ), 
                       Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(left:15,right: 25),
-                child: TextField(decoration: InputDecoration(border: OutlineInputBorder(
+                padding: EdgeInsets.only(left:15,right: 25),
+                child: TextField(
+                  controller: code2,
+                  decoration: InputDecoration(border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10)
                 ))
                 ),
@@ -74,9 +84,9 @@ class _listpropertyState extends State<otp> {
                       ),
                       Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(right:35,left:5),
+                padding:EdgeInsets.only(right:35,left:5),
                 child: TextField(
-                 
+                 controller: code3,
                   decoration: InputDecoration(border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10)
                 ))
@@ -101,7 +111,7 @@ class _listpropertyState extends State<otp> {
                                       
                           ),
               onPressed: (){
-                otpuser();
+               otpuser();
                
               
                       }, child: Text('please wait for a few seconds',
@@ -115,25 +125,28 @@ class _listpropertyState extends State<otp> {
   }
    Future<void> otpuser() async {
     final _otp = code.text;
-    final _number = phone.text;
+    final _otp1 = code1.text;
+    final _otp2 = code2.text;
+    final _otp3 = code3.text;
+   
 
-    if (_otp.isEmpty) {
+    if( (_otp.isEmpty)||(_otp1.isEmpty)||(_otp2.isEmpty)||(_otp3.isEmpty) ){
      
       showErrorMessage('Please enter otp');
-    } else if(_number.isEmpty){
-      showErrorMessage('please enter ');
-    }
+    } 
     
      else {
       final _formdata = FormData.fromMap({
-        'phone': _number,
-        'code': _otp,
-        
+        'phone': "503023010",
+        'otp': _otp+_otp1+_otp2+_otp3
       });
-      final result = await ApiClass().loginUserApi(_formdata);
+      final result = await ApiClass().otpuser(_formdata);
       if (result != null) {
-        if (result.status == 400) {
-          showSuccessMessage("successfully logged");
+        if (result.status == 200) {
+          showSuccessMessage("successfully ");
+          var token = result.data!.apiToken;
+          print("777777777$token");
+         sharedvalue(token);
         } else {
           showErrorMessage("usernotfound");
         }
@@ -143,7 +156,7 @@ class _listpropertyState extends State<otp> {
    void showErrorMessage(String message) {
     
     MotionToast.error(
-      title: const Text(
+      title: Text(
         'Error',
         style: TextStyle(
           fontWeight: FontWeight.bold,
@@ -159,8 +172,7 @@ class _listpropertyState extends State<otp> {
   }
   void showSuccessMessage(String message) {
      Navigator.push(context,MaterialPageRoute(builder: (context)=>home()));
-    Navigator.push(context,MaterialPageRoute(
-                        builder: (context)=>otp()));
+  
     MotionToast.success(
       title: Text(
         'Success',

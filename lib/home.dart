@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:propertyhubflutter/about.dart';
+import 'package:propertyhubflutter/api/api.dart';
 import 'package:propertyhubflutter/drawerside.dart';
 import 'package:propertyhubflutter/list.dart';
 import 'package:propertyhubflutter/notification.dart';
@@ -22,6 +23,7 @@ class home extends StatefulWidget {
 }
 
 class _homescreenState extends State<home> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,8 +51,8 @@ class _homescreenState extends State<home> {
                 opacity: 0.5)),
         child: Padding(
           padding: const EdgeInsets.only(top: 25),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
+            
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 30),
@@ -112,6 +114,7 @@ class _homescreenState extends State<home> {
                                   ),
                                 ),
                                 onTap: () {
+                                 
                                   if (index == 0) {
                                     Navigator.push(
                                         context,
@@ -144,6 +147,7 @@ class _homescreenState extends State<home> {
       ),
     );
   }
+  
 }
 
 
