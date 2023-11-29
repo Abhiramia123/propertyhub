@@ -1,4 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:motion_toast/motion_toast.dart';
+import 'package:motion_toast/resources/arrays.dart';
+import 'package:propertyhubflutter/api/api.dart';
 
 class list extends StatefulWidget {
   const list({super.key});
@@ -8,10 +12,21 @@ class list extends StatefulWidget {
 }
 
 class _listState extends State<list> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    listuser();
+   
+    
+  }
   final relation = "agent";
   final name=TextEditingController();
   final phone=TextEditingController();
   final email=TextEditingController();
+  String? rent ;
+  String? sale ;
+  String? realation ;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,7 +89,9 @@ class _listState extends State<list> {
                          child: Padding(
                            padding: const EdgeInsets.only(left:20,right: 10,top: 10),
                            child: DropdownButtonFormField<String>(
+                            
                             decoration: InputDecoration(
+                              
                               border: OutlineInputBorder()
                             ),
                             items: <String>['1', '2', '3', '4'].map((String value) {
@@ -83,7 +100,11 @@ class _listState extends State<list> {
                                child: Text(value),
                             );
                                                }).toList(),
-                                              onChanged: (_) {},
+                                              onChanged: (newvalue) {
+                                                setState(() {
+                                                  rent=newvalue;
+                                                });
+                                              },
                              ),
                          ),
                        ),
@@ -111,7 +132,9 @@ class _listState extends State<list> {
                                child: Text(value),
                             );
                                                }).toList(),
-                                              onChanged: (_) {},
+                                              onChanged: (neqwvalue2) {
+                                                sale=neqwvalue2;
+                                              },
                              ),
                          ),
                                              ),
@@ -145,7 +168,9 @@ class _listState extends State<list> {
                                  
                               );
                                                  }).toList(),
-                                                onChanged: (_) {},
+                                                onChanged: (newvalue3) {
+                                                  realation=newvalue3;
+                                                },
                                ),
                       ),
                       Row(
@@ -162,7 +187,8 @@ class _listState extends State<list> {
                                  borderRadius: BorderRadiusDirectional.circular(10)
                                    ))
                                      ),
-                                   onPressed: (){               
+                                   onPressed: (){  
+                                    listuser();             
                                    }, child: Text(' Request',style: TextStyle(color: Colors.white))),
                                       ),
                                      ),
@@ -187,5 +213,79 @@ class _listState extends State<list> {
         ),
         
     );
+ 
+  }
+   Future<void> listuser() async {
+   final _Name = name.text;
+     final _phone = phone.text;
+      final _mail = email.text;
+    
+
+    if (_Name.isEmpty) {
+      showErrorMessage('Please enter name');
+    } 
+    else if (_phone.isEmpty){
+      showErrorMessage('please enter phonenumber');
+    }
+    else if (_mail.isEmpty){
+      showErrorMessage('please enter mail');
+    }
+  
+    
+    
+     else {
+      final _formdata = FormData.fromMap({
+       'name': _Name,
+        'phone': _phone,
+        'email': _mail,
+        'no_of_rental_properties': rent,
+        'no_of_sale_properties': sale,
+        'property_rel': realation
+        
+      });
+      
+      final result = await ApiClass().listUserApi(_formdata);
+      if (result != null) {
+        if (result.status == 200) {
+          showSuccessMessage("successfully");
+        } else {
+          showErrorMessage("usernotfound");
+        }
+      }
+    }
+  }
+   void showErrorMessage(String message) {
+    MotionToast.error(
+      title: Text(
+        'Error',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      description: Text(message),
+      position: MotionToastPosition.top,
+      barrierColor: Colors.black.withOpacity(0.3),
+      width: 300,
+      height: 80,
+      dismissable: true,
+    ).show(context);
+  }
+  void showSuccessMessage(String message) {
+   
+    MotionToast.success(
+      title: Text(
+        'Success',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      description: Text(message),
+      position: MotionToastPosition.top,
+      barrierColor: Colors.black.withOpacity(0.3),
+      width: 300,
+      height: 80,
+      dismissable: true,
+      animationDuration: Duration(milliseconds: 3),
+    ).show(context);
   }
 }

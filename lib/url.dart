@@ -4,4 +4,5 @@ class URL{
   String otp = 'login';
   String profiles ='profile';
   String update = 'update-profile';
+  String owner = 'become-owner';
 }

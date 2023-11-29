@@ -240,9 +240,18 @@ class _profileState extends State<profile> {
      final _phone = mobile.text;
      final _place = address.text;
 
-    if (_phone.isEmpty) {
-      showErrorMessage('Please enter phonenumber');
+    if (_Name.isEmpty) {
+      showErrorMessage('Please enter name');
     } 
+    else if (_mail.isEmpty){
+      showErrorMessage('please enter mail');
+    }
+    else if (_phone.isEmpty){
+      showErrorMessage('please enter phone');
+    }
+    else if (_place.isEmpty){
+      showErrorMessage('please enter place');
+    }
      else {
       final _formdata = FormData.fromMap({
        'name': _Name,
