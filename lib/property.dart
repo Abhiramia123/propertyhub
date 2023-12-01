@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:propertyhubflutter/api/api.dart';
+import 'package:propertyhubflutter/list.dart';
+import 'package:propertyhubflutter/model.dart/proprty1.dart';
 import 'package:propertyhubflutter/payment.dart';
 
 class property extends StatefulWidget {
@@ -9,11 +12,30 @@ class property extends StatefulWidget {
 }
 
 class _propertyState extends State<property> {
+  var jsonlist=[];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setState(() {
+      propertyUser();
+    });
+   
+    
+  }
   final img =['assets/image/download (2).jpeg','assets/image/images (2).jpeg','assets/image/images (3).jpeg'];
   final no=['1','3BHK','3BHK'];
   final code=['property code: #REG15675','property code: #REG978575','property code: #REG46765'];
-  final rent=['rent : SAR 30,000.00','rent : SAR 35,000.00','rent : SAR 25,000.00'];
+  final rnt=['rent : SAR 30,000.00','rent : SAR 35,000.00','rent : SAR 25,000.00'];
   final date=['Next Due Date : 2023-05-01','Next Due Date : 2023-02-07','Next Due Date : 2023-01-01'];
+  String? propertyRegNo;
+  String? status;
+  String? frequency;
+  String? propertyName;
+  String? sellingPrice;
+  String? rent;
+  String? dueDate;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(
@@ -22,10 +44,10 @@ class _propertyState extends State<property> {
       title: Text(' My properties',style: TextStyle(color: Colors.white)),),
       backgroundColor: Color.fromARGB(255, 224, 220, 220),
       body: ListView.builder(
-        itemCount: img.length,
+        itemCount:jsonlist.length,
         itemBuilder: (context,index){
         return SizedBox(
-              height:230,
+              height:250,
               width: double.infinity,
               child:
                Card(child:
@@ -48,15 +70,16 @@ class _propertyState extends State<property> {
                         flex: 2,
                          child: Container(
                            child: Padding(
-                             padding: const EdgeInsets.only(left: 10),
+                             padding: const EdgeInsets.only(left:20,top: 10),
                              child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                                                          
                               children: [ 
-                               Text(no[index]),
-                                                Text(code[index]),
-                                                Text(rent[index],style: TextStyle(fontWeight: FontWeight.bold),),
-                                                Text(date[index])
+                               Text(jsonlist[index].propertyName),
+                                                Text("property Code:${jsonlist[index]. propertyRegNo}"),
+                                                Text("Rent:${jsonlist[index].rent}",style: TextStyle(fontWeight: FontWeight.bold),),
+                                                Text("price:${jsonlist[index].sellingPrice}"),
+                                                
                                                 
                              ],),
                            ),
@@ -75,20 +98,11 @@ class _propertyState extends State<property> {
                     }, child: Text('Pay now',style: TextStyle(fontSize: 15,
                     decoration: TextDecoration.underline
                     ),))],
-                      // children: [Padding(
-                      //   padding: const EdgeInsets.only(right: 30),
-                      //   child: Text('Pay Now',
-                      //    style: TextStyle(fontSize: 15,
-                      //    color: Color.fromARGB(255, 11, 51, 85),
-                      //    decoration: TextDecoration.underline
-                      //    ),
-                      //    ),
-                      // )
-                      // ],
+                     
                       ),
 
                        Padding(
-                         padding: const EdgeInsets.only(top: 20,right:40),
+                         padding: const EdgeInsets.only(top: 10,right:40),
                          child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -129,4 +143,15 @@ class _propertyState extends State<property> {
       
       );
   }
+  Future<void> propertyUser()async {
+    final result = await ApiClass().propertyUserApi();
+    setState(() {
+     if(result !=null){
+      if (result.status==200){
+        jsonlist.addAll(result.bookedData!.bookedProperty!);
+        print("==============${jsonlist}");
+      }
+
+     }   });
+   }
 }

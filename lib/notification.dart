@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:propertyhubflutter/api/api.dart';
 
 class notification extends StatefulWidget {
   const notification({super.key});
@@ -8,6 +9,20 @@ class notification extends StatefulWidget {
 }
 
 class _notificationState extends State<notification> {
+  var jsonlist=[];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    
+   notifyuser();
+    
+  }
+  String? notificationHeading;
+  String? typeOfNotification;
+  String? notificationText;
+  String? status;
+  String? date;
   
   @override
   Widget build(BuildContext context) {
@@ -18,9 +33,9 @@ class _notificationState extends State<notification> {
         backgroundColor: const Color.fromARGB(255, 33, 86, 35),
         title: Text('Notification',style: TextStyle(color: Colors.white)),),
         body: ListView.builder(
-          itemCount: 10,
+          itemCount: jsonlist.length,
           itemBuilder:(context,index){
-          return SizedBox(height:150,
+          return SizedBox(height:250,
           width: double.infinity,
           child: 
           Card(child:
@@ -42,16 +57,20 @@ class _notificationState extends State<notification> {
                         flex: 2,
                          child: Container(
                            child: Padding(
-                             padding: const EdgeInsets.only(left:10),
+                             padding: const EdgeInsets.only(left:10,top: 30),
                              child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [Text('Service has been set aside for inspection',
-                              style: TextStyle(fontSize:15),),
-                              SizedBox(height: 10,),
-                              Text('service has been set aside for inspection.order id:-9inspector :_Salmanphone number:-045676...thanks!',
-                              style: TextStyle(fontSize: 10),),
-                              SizedBox(height: 10,),
-                              Text('1 month',style: TextStyle(fontSize: 10),)
+                              children: [
+                                Text(jsonlist[index].notificationHeading,
+                                style: TextStyle(fontSize:15,fontWeight: FontWeight.bold),),
+                                SizedBox(height: 20,),
+                             Text(jsonlist[index].typeOfNotification),
+                             Text(jsonlist[index].notificationText),
+                            
+                             Text(jsonlist[index].status),
+                             SizedBox(height: 10),
+                             Text(jsonlist[index].date)
+                             
                               ],
                              ))))                 
             
@@ -63,4 +82,15 @@ class _notificationState extends State<notification> {
     );
     
   }
+  Future<void> notifyuser() async {
+    final result = await ApiClass().notifyUserApi();
+    setState(() {
+     if(result !=null){
+      if (result.status==200){
+        jsonlist.addAll(result.data!.notifications!);
+     
+      }
+
+     }   });
+   }
 }

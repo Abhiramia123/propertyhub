@@ -53,6 +53,13 @@ class _listpropertyState extends State<otp> {
                     
                     child: TextField(
                       controller: code,
+                      maxLines: 1,
+                      onChanged: (value){
+                        if(value.isNotEmpty) {
+          FocusScope.of(context).nextFocus();
+        }
+
+                      },
                       decoration: InputDecoration(border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)
                             ))
@@ -65,6 +72,13 @@ class _listpropertyState extends State<otp> {
                 padding: EdgeInsets.only(left: 25,right:15),
                 child: TextField(
                   controller: code1,
+                  maxLines: 1,
+                      onChanged: (value){
+                        if(value.isNotEmpty) {
+          FocusScope.of(context).nextFocus();
+        }
+
+                      },
                   decoration: InputDecoration(border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10)
                 ))
@@ -76,6 +90,13 @@ class _listpropertyState extends State<otp> {
                 padding: EdgeInsets.only(left:15,right: 25),
                 child: TextField(
                   controller: code2,
+                  maxLines: 1,
+                      onChanged: (value){
+                        if(value.isNotEmpty) {
+          FocusScope.of(context).nextFocus();
+        }
+
+                      },
                   decoration: InputDecoration(border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10)
                 ))
@@ -87,6 +108,13 @@ class _listpropertyState extends State<otp> {
                 padding:EdgeInsets.only(right:35,left:5),
                 child: TextField(
                  controller: code3,
+                 maxLines: 1,
+                      onChanged: (value){
+                        if(value.isNotEmpty) {
+          FocusScope.of(context).nextFocus();
+        }
+
+                      },
                   decoration: InputDecoration(border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10)
                 ))

@@ -16,10 +16,11 @@ class _listState extends State<list> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    listuser();
+    
    
     
   }
+  
   final relation = "agent";
   final name=TextEditingController();
   final phone=TextEditingController();
